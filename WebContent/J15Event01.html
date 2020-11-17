@@ -7,6 +7,21 @@
     <script>
         function loadEventFunc(){
             alert("문서의 load가 완료되었습니다.");
+
+            var mydiv = document.getElementById(mydiv).innerHTML;
+            alert("mydiv의 내용="+mydiv);
+        }
+        /*
+        JS는 인터프리터 방식이므로 DOM이 등장하기전에 해당 내용을
+        가져오면 에러가 발생하게된다. 따라서 HTML문서의 로드가 
+        끝난 이후 읽어올 수 있도록 함수로 정의하거나, 아예 문서
+        하단에 script를 기술해야한다.
+
+        var mydiv = document.getElementById(mydiv).innerHTML;
+            alert("mydiv의 내용="+mydiv);*/
+        function myFunc(){
+            var mydiv = document.getElementById(mydiv).innerHTML;
+            alert("mydiv의 내용="+mydiv);
         }
     </script>
 </head>
@@ -21,6 +36,14 @@
     <h2>이벤트 - load첫번째</h2>
     <script>
         alert("문서가 끝나기 직전");
+    </script>
+
+    <div id="mydiv" onclick="myfunc();" style="cursor: pointer;">
+        여기는 div 영역입니다.
+    </div>
+    
+    <script>
+        //DOM이 선언된 이후 이므로 여기에 기술해도 된다.
     </script>
 </body>
 </html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J17CssControl.html</title>
+    <script>
+        //전역변수, 기사부분의 폰트 사이즈를 저장
+        var pTag, pSize; 
+
+        window.onload = function(){
+            pTag = document.getElementById("article");
+            // 폰트사이즈 변경을 위해 숫자로 변경한다.
+            pSize = parseInt(pTag.style.fontSize);
+        }
+
+        function fnArticle(flag){
+            /*
+            JS에서 CSS속성 컨트롤
+                : DOM.style.CSS속성 = "속성값";
+                단, 이때 CSS속성에 하이픈이 들어간다면, 제거 후 첫글자를
+                대문자로 변경한다. 또한 크기를 부여할때는 반드시 px과 같은
+                단위를 기술해야한다.
+            */
+            switch(flag){
+                case "+":
+                    pSize +=10;
+                    pTag.style.fontSize = pSize+"px";
+                    break;
+                case "-":
+                    pSize -=10;
+                    pTag.style.fontSize = pSize+"px";
+                break;
+                case "R":
+                    pTag.style.color = "red";
+                    break;
+                case "G":
+                    pTag.style.color = "green";
+                    break;
+                case "B":
+                    pTag.style.color = "blue";
+                    break;
+                case "Bo" :
+                    pTag.style.fontWeight = "bold";
+                    breakl
+                case "No" :
+                    pTag.style.fontWeight = "nomal";
+                    breakl
+                case "Ce" :
+                    pTag.style.textAlign = "center";
+                    breakl
+                case "Le" :
+                    pTag.style.textAlign = "left";
+                    breakl
+                default :
+                    pTag.style.color = "black";
+            }
+        }
+        var fontToggle = 0;
+        function setFont(){
+            //문제에서 주어진 폰트를 배열로 선언
+            var fontArray = ['Vardana','굴림체','휴먼옛체','궁서체','Impact'];
+            // 정수를 5로 나누면 나머지는 0~4까지 생성됨
+            var fontIndex = fontToggle % 5;
+            // 위에서 구한 수를 인덱스로 사용하여 폰트를 설정
+            pTag.style.fontFamily = fontArray[fontIndex];
+            // 함수를 호출할때마다 전역변수 증가
+            fontToggle++;            
+        }
+    </script>
+</head>
+<body>
+    <h2>자바스크립트로 CSS제어하기</h2>
+    <input type="button" value="글꼴바꾸기" onclick="setFont();"/>
+    <fieldset>
+        <legend>신문기사</legend>
+        <button onclick="fnArticle('+');">+</button>
+        <button onclick="fnArticle('-');">-</button>
+        <button onclick="fnArticle('R');">R</button>
+        <button onclick="fnArticle('G');">G</button>
+        <button onclick="fnArticle('B');">B</button>
+        <button onclick="fnArticle('');">Black</button>
+        <button onclick="fnArticle('Bo');">볼드체</button>
+        <button onclick="fnArticle('No');">보통체</button>
+        <button onclick="fnArticle('Ce');">가운데정렬</button>
+        <button onclick="fnArticle('Le');">좌측정렬</button>
+    </fieldset>
+    <p style="font-size: 12px;" id="article">
+        오늘의 뉴스<br>
+        5G SA 상용화 위한 사전 준비…안정적인 서비스 품질 확보 가능
+        (지디넷코리아=선민규 기자)LG유플러스(대표 하현회)가 컨테이너 기반 5G 코어 장비
+        (이동교환기·패킷교환기)의 테스트를 완료했다고 17일 밝혔다.
+        컨테이너란 어디서나 실행 가능한 소형의 독립 운영체제다. 아마존·구글·마이크로소프트 등 
+        IT 업계에서는 클라우드 인프라에 컨테이너의 개념을 도입해 사용하고 있다.
+        스마트 팩토리, 가상/증강현실(AR/VR), 클라우드 게임 등 서비스를 제공하기 위해서는 
+        5G 네트워크의 민첩성·확장성·자원 효율성·안정적인 운영이 요구된다. 이에 컨테이너는 
+        클라우드 환경에 필요한 차세대 5G의 핵심요소로 평가받고 있다.
+        LG유플러스 직원들이 마곡사옥에 마련된 5G 코어 장비를 살펴보고 있는 모습.(사진=LG유플러스)
+        통신사는 컨테이너 기술을 통해 애플리케이션을 빠르게 설치·배포하고 기능·특성별로 모듈화해 
+        서로 다른 애플리케이션에서 필요한 특정 기능만 구성할 수 있게 확장할 수 있다. 
+        기존 네트워크가상화(NFV) 장비에 비해 CPU·메모리를 적게 사용하므로 하드웨어 자원을 
+        최적화해 높은 성능을 얻을 수 있다.        
+    </p>
+</body>
+</html>
